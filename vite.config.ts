@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 import mdx from "fumadocs-mdx/vite";
-import { nitroV2Plugin } from "@tanstack/nitro-v2-vite-plugin";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
   server: {
@@ -21,7 +21,9 @@ export default defineConfig({
         enabled: true,
       },
     }),
-    nitroV2Plugin(),
+    nitro({
+      // preset: "vercel",
+    }),
     react(),
   ],
 });
