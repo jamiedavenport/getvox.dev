@@ -1,0 +1,11 @@
+{
+    "title": "Vox",
+    "description": "A headless, zero-config user feedback platform.",
+    "icon": "Vox",
+    "pages": [
+        "index",
+        "getting-started",
+        "frontend",
+        "backend"
+    ]
+}
