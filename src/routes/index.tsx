@@ -4,9 +4,9 @@ import { baseOptions } from '@/lib/layout.shared';
 
 export const Route = createFileRoute('/')({
   component: Home,
-  loader: async () => {
-    throw redirect({ to: "/docs/$", params: { _splat: "" } });
-  },
+  // loader: async () => {
+  //   throw redirect({ to: "/docs/$", params: { _splat: "" } });
+  // },
 });
 
 function Home() {
