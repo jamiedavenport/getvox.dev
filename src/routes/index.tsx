@@ -1,9 +1,12 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { createFileRoute, Link, redirect } from '@tanstack/react-router';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { baseOptions } from '@/lib/layout.shared';
 
 export const Route = createFileRoute('/')({
   component: Home,
+  loader: async () => {
+    throw redirect({ to: "/docs/$", params: { _splat: "" } });
+  },
 });
 
 function Home() {
