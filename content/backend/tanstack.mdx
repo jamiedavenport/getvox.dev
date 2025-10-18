@@ -3,4 +3,35 @@ title: Tanstack Start
 description: Add Vox to your Tanstack Start project.
 ---
 
-TODO
+To add the backend integration to your Tanstack Start project, you need to create a new file `src/routes/api/feedback.ts` file and add the following code:
+
+```ts
+import { createFeedbackHandler } from "voxjs/server";
+import { createFileRoute } from "@tanstack/react-router";
+import { json } from "@tanstack/react-start";
+import { getAuth } from "@/auth/functions";
+import { env } from "@/env";
+
+export const Route = createFileRoute("/api/feedback")({
+	server: {
+		handlers: {
+			POST: async ({ request }) => {
+				const auth = await getAuth(); // Your custom auth logic.
+
+				if (!auth) {
+					return json({ error: "Unauthorized" }, { status: 401 });
+				}
+
+				return createFeedbackHandler({
+					apiKey: env.FEEDBACK_KEY, // Your Vox API key.
+					tags: {
+						app: "my-app", // Your app name.
+						user: auth.user.email,
+					},
+				})(request);
+			},
+		},
+	},
+});
+
+```
