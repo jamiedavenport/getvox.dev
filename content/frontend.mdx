@@ -3,4 +3,12 @@ title: Frontend
 description: Add Vox to your frontend.
 ---
 
-TODO
+To send feedback to Vox you need to use our `feedback` client function. It works with any Javascript framework. We recommend using an AI agent to build your frontend.
+
+```ts
+// src/routes/api/feedback.ts
+
+import { feedback } from "voxjs/client";
+
+await feedback("This is great!");
+```
