@@ -44,6 +44,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body className="flex flex-col min-h-screen">
         <RootProvider>{children}</RootProvider>
         <Scripts />
+
+        <script
+          src="https://cdn.databuddy.cc/databuddy.js"
+          data-client-id={import.meta.env.VITE_DATABUDDY_CLIENT_ID}
+          data-enable-batching="true"
+          crossOrigin="anonymous"
+          async
+        ></script>
       </body>
     </html>
   );
