@@ -1,0 +1,29 @@
+---
+title: SvelteKit
+description: Add Vox to your SvelteKit project.
+---
+
+To add the backend integration to your SvelteKit project, you need to create a new file `src/routes/api/feedback/+server.ts` and add the following code:
+
+```ts
+import { createFeedbackHandler } from "voxjs/server";
+import { json } from "@sveltejs/kit";
+import { getSession } from "$lib/auth";
+import { env } from "$env/static/private";
+
+export async function POST({ request }) {
+	const session = await getSession(request); // Your custom auth logic.
+
+	if (!session) {
+		return json({ error: "Unauthorized" }, { status: 401 });
+	}
+
+	return createFeedbackHandler({
+		apiKey: env.FEEDBACK_KEY, // Your Vox API key.
+		tags: {
+			app: "my-app", // Your app name.
+			user: session.user.email,
+		},
+	})(request);
+}
+```

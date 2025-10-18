@@ -1,0 +1,38 @@
+---
+title: Nuxt
+description: Add Vox to your Nuxt project.
+---
+
+To add the backend integration to your Nuxt project, you need to create a new file `server/api/feedback.post.ts` and add the following code:
+
+```ts
+import { createFeedbackHandler } from "voxjs/server";
+import { getServerSession } from "#auth";
+import { env } from "~/env";
+
+export default defineEventHandler(async (event) => {
+	if (getMethod(event) !== "POST") {
+		throw createError({
+			statusCode: 405,
+			statusMessage: "Method not allowed",
+		});
+	}
+
+	const session = await getServerSession(event); // Your custom auth logic.
+
+	if (!session) {
+		throw createError({
+			statusCode: 401,
+			statusMessage: "Unauthorized",
+		});
+	}
+
+	return createFeedbackHandler({
+		apiKey: env.FEEDBACK_KEY, // Your Vox API key.
+		tags: {
+			app: "my-app", // Your app name.
+			user: session.user?.email,
+		},
+	})(event.node.req);
+});
+```
