@@ -6,5 +6,13 @@ export function baseOptions(): BaseLayoutProps {
     nav: {
       title: <Logo />,
     },
+    githubUrl: 'https://github.com/jamiedavenport/feedback',
+    links: [
+      {
+        text: 'Sign Up',
+        url: 'https://tally.so/r/3xeovk',
+        type: 'button'
+      },
+    ],
   };
 }

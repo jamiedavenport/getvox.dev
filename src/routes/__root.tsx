@@ -7,6 +7,7 @@ import {
 import * as React from 'react';
 import appCss from '@/styles/app.css?url';
 import { RootProvider } from 'fumadocs-ui/provider/tanstack';
+import favicon from '@/assets/Favicon.svg?url';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -22,7 +23,10 @@ export const Route = createRootRoute({
         title: 'Vox',
       },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [{ rel: 'stylesheet', href: appCss }, {
+      rel: "icon",
+      href: favicon
+    }],
   }),
   component: RootComponent,
 });
