@@ -7,7 +7,7 @@ import {
 import * as React from 'react';
 import appCss from '@/styles/app.css?url';
 import { RootProvider } from 'fumadocs-ui/provider/tanstack';
-import favicon from '@/assets/Favicon.svg?url';
+import favicon from '@/assets/favicon.svg?url';
 
 export const Route = createRootRoute({
   head: () => ({
