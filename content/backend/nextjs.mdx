@@ -8,7 +8,7 @@ To add the backend integration to your Next.js project, you need to create a new
 ## App Router
 
 ```ts
-import { createFeedbackHandler } from "voxjs/server";
+import { createFeedbackHandler } from "@jxdltd/vox/server";
 import { NextRequest } from "next/server";
 import { getServerSession } from "next-auth";
 import { env } from "@/env";
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 ## Pages Router
 
 ```ts
-import { createFeedbackHandler } from "voxjs/server";
+import { createFeedbackHandler } from "@jxdltd/vox/server";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { env } from "@/env";
